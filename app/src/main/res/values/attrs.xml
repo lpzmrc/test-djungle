@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AppTheme">
+        <attr name="colorPrimaryLogin" format="color" />
+        <attr name="colorPrimaryGallery" format="color" />
+        <attr name="colorPrimaryTodos" format="color" />
+        <attr name="colorPrimarySettings" format="color" />
+    </declare-styleable>
+</resources>

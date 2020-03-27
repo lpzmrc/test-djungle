@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    app:startDestination="@id/navigation_gallery">
+
+    <action
+        android:id="@+id/startLogin"
+        app:destination="@id/navigation_login" />
+
+    <action
+        android:id="@+id/finishLogin"
+        app:destination="@id/navigation_gallery"
+        app:popUpTo="@id/navigation_gallery"
+        app:popUpToInclusive="false" />
+
+    <fragment
+        android:id="@+id/navigation_gallery"
+        android:name="lpzmrc.test.djungle.io.ui.view.gallery.GalleryFragment"
+        android:label="@string/title_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/navigation_todos"
+        android:name="lpzmrc.test.djungle.io.ui.view.todos.ToDosFragment"
+        android:label="@string/title_todos"
+        tools:layout="@layout/fragment_todos" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="lpzmrc.test.djungle.io.ui.view.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
+
+    <fragment
+        android:id="@+id/navigation_login"
+        android:name="lpzmrc.test.djungle.io.ui.view.login.LoginFragment"
+        android:label="@string/title_login"
+        tools:layout="@layout/fragment_login" />
+</navigation>
