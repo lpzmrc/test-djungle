@@ -32,7 +32,7 @@ class GalleyGlideModule : AppGlideModule() {
         val client = OkHttpClient.Builder()
             .readTimeout(15, TimeUnit.SECONDS)
             .connectTimeout(15, TimeUnit.SECONDS)
-            .addInterceptor(UserAgentInterceptor("PostmanRuntime/7.24.0"))
+            .addInterceptor(UserAgentInterceptor())
             .addInterceptor(loggerInterceptor)
             .build()
 
