@@ -8,10 +8,10 @@ Login displays a login view. It can be tested with the following credentials, pr
 Username can be a text string or a valid email address, meanwhile Password must be at least 6 characters long
 
 # Gallery
-Gallery displays an image ist in a grid view: to force data refresh swipe down and release.
+Gallery displays an image ist in a grid view mode: to force data refresh swipe down and release.
 
 # ToDos
-ToDos displays a todo list in a list view: to force data refresh swipe down and release.
+ToDos displays a task list in a list view mode: to force data refresh swipe down and release.
 
 # Setting
 Settings displays logged user related info and an button to log out from the application.
