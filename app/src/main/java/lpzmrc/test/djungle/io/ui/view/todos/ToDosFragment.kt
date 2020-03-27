@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import lpzmrc.test.djungle.io.R
 import lpzmrc.test.djungle.io.data.model.AuthenticationState
@@ -15,12 +15,13 @@ import lpzmrc.test.djungle.io.ui.controller.ToDosController
 import lpzmrc.test.djungle.io.ui.kxt.showError
 import lpzmrc.test.djungle.io.ui.kxt.todoDecoration
 import lpzmrc.test.djungle.io.ui.kxt.todoLayoutManager
+import timber.log.Timber
 
 
 class ToDosFragment : Fragment() {
 
     private val controller = ToDosController()
-    private val viewModel: ToDosViewModel by viewModels()
+    private val viewModel: ToDosViewModel by activityViewModels()
     private lateinit var binding: FragmentTodosBinding
 
 
@@ -67,7 +68,10 @@ class ToDosFragment : Fragment() {
             binding.refresh.isEnabled = authenticationState == AuthenticationState.AUTHENTICATED
             when (authenticationState) {
                 AuthenticationState.AUTHENTICATED -> {
-                    viewModel.fetchData()
+                    if (viewModel.hasNoData()) {
+                        Timber.e(">>>> FORCE FETCH")
+                        viewModel.fetchData()
+                    }
                 }
                 else -> {
                     viewModel.clearData()

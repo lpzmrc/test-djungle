@@ -47,6 +47,10 @@ class ToDosViewModel : ViewModel(), KoinComponent {
             _toDosResult.value = ToDosResult(listOf(ToDoView.ToDoInvalidated))
         }
     }
+
+    fun hasNoData(): Boolean {
+        return toDosResult.value?.data?.contains(ToDoView.ToDoInvalidated) ?: true
+    }
 }
 
 private fun List<ToDo>?.toDoList(): List<ToDoView> = when {

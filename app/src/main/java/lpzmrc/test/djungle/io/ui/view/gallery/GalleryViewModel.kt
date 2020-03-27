@@ -47,6 +47,10 @@ class GalleryViewModel : ViewModel(), KoinComponent {
             _galleryResult.value = GalleryResult(listOf(GalleryView.GalleryInvalidated))
         }
     }
+
+    fun hasNoData(): Boolean {
+        return galleryResult.value?.data?.contains(GalleryView.GalleryInvalidated) ?: true
+    }
 }
 
 private fun List<Photo>?.toGalleryList(): List<GalleryView> = when {

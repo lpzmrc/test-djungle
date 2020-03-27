@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import lpzmrc.test.djungle.io.R
 import lpzmrc.test.djungle.io.data.model.AuthenticationState
@@ -19,7 +19,7 @@ import lpzmrc.test.djungle.io.ui.kxt.showError
 class GalleryFragment : Fragment() {
 
     private val controller = GalleryController()
-    private val viewModel: GalleryViewModel by viewModels()
+    private val viewModel: GalleryViewModel by activityViewModels()
     private lateinit var binding: FragmentGalleryBinding
 
     override fun onCreateView(
@@ -66,7 +66,9 @@ class GalleryFragment : Fragment() {
             binding.refresh.isEnabled = authenticationState == AuthenticationState.AUTHENTICATED
             when (authenticationState) {
                 AuthenticationState.AUTHENTICATED -> {
-                    viewModel.fetchData()
+                    if (viewModel.hasNoData()) {
+                        viewModel.fetchData()
+                    }
                 }
                 else -> {
                     viewModel.clearData()
