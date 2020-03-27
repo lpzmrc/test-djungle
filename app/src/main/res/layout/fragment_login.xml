@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.view.login.LoginFragment">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="lpzmrc.test.djungle.io.ui.view.login.LoginViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ProgressBar
+                android:id="@+id/loading_progress_bar"
+                style="@style/Widget.App.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:indeterminate="true"
+                android:visibility="@{viewModel.progress? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/password_text_input_layout"
+                app:layout_constraintStart_toStartOf="@+id/password_text_input_layout"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/fragment_horizontal_margin"
+                android:paddingTop="@dimen/fragment_horizontal_margin"
+                android:paddingRight="@dimen/fragment_horizontal_margin"
+                android:paddingBottom="@dimen/fragment_vertical_margin">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/username_text_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    app:errorText="@{viewModel.loginFormState.usernameError}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_goneMarginTop="@dimen/fragment_vertical_margin">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_username"
+                        android:imeOptions="flagNoExtractUi"
+                        android:inputType="textEmailAddress"
+                        android:selectAllOnFocus="true"
+                        android:text="@={viewModel.username}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/password_text_input_layout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    app:errorText="@{viewModel.loginFormState.passwordError}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/username_text_input_layout"
+                    app:passwordToggleEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/prompt_password"
+                        android:imeActionLabel="@string/action_log_in_short"
+                        android:imeOptions="flagNoExtractUi|actionDone"
+                        android:inputType="textPassword"
+                        android:selectAllOnFocus="true"
+                        android:text="@={viewModel.password}" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginStart="48dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="48dp"
+                    android:layout_marginBottom="64dp"
+                    android:enabled="@{viewModel.loginFormState.dataValid}"
+                    android:text="@string/action_log_in"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/password_text_input_layout"
+                    app:layout_constraintVertical_bias="0.2" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </ScrollView>
+</layout>

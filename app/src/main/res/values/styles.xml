@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="App.Theme" parent="Theme.MaterialComponents.Light">
+        <item name="textInputStyle">@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox
+        </item>
+    </style>
+
+    <style name="Widget.App.ProgressBar.Horizontal" parent="@style/Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:minHeight">4dp</item>
+    </style>
+
+    <style name="Widget.App.CompoundButton.CheckBox" parent="@style/Widget.MaterialComponents.CompoundButton.CheckBox">
+        <item name="android:buttonTint">@color/cardview_dark_background</item>
+    </style>
+</resources>

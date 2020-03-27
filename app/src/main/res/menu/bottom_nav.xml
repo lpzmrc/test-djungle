@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_gallery"
+        android:contentDescription="@string/cd_gallery"
+        android:icon="@drawable/ic_gallery"
+        android:title="@string/title_gallery" />
+    <item
+        android:id="@+id/navigation_todos"
+        android:contentDescription="@string/cd_todos"
+        android:icon="@drawable/ic_todos"
+        android:title="@string/title_todos" />
+    <item
+        android:id="@+id/navigation_settings"
+        android:contentDescription="@string/cd_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/title_settings" />
+</menu>
